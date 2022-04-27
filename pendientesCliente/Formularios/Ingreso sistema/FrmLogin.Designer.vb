@@ -169,7 +169,7 @@ Partial Class FrmLogin
         Me.BunifuPictureBox1.BorderRadius = 75
         Me.BunifuPictureBox1.Image = CType(resources.GetObject("BunifuPictureBox1.Image"), System.Drawing.Image)
         Me.BunifuPictureBox1.IsCircle = True
-        Me.BunifuPictureBox1.Location = New System.Drawing.Point(142, 30)
+        Me.BunifuPictureBox1.Location = New System.Drawing.Point(140, 30)
         Me.BunifuPictureBox1.Name = "BunifuPictureBox1"
         Me.BunifuPictureBox1.Size = New System.Drawing.Size(150, 150)
         Me.BunifuPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
