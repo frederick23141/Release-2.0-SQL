@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PRGPRODUCCIONDataSet2" targetNamespace="http://tempuri.org/PRGPRODUCCIONDataSet2.xsd" xmlns:mstns="http://tempuri.org/PRGPRODUCCIONDataSet2.xsd" xmlns="http://tempuri.org/PRGPRODUCCIONDataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="PRGPRODUCCIONConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PRGPRODUCCIONConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Spic.My.MySettings.GlobalReference.Default.PRGPRODUCCIONConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="F_V_anos_prodTableAdapter" GeneratorDataComponentClassName="F_V_anos_prodTableAdapter" Name="F_V_anos_prod" UserDataComponentName="F_V_anos_prodTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="PRGPRODUCCIONConnectionString (MySettings)" DbObjectName="PRGPRODUCCION.dbo.F_V_anos_prod" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ano FROM dbo.F_V_anos_prod</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ano" DataSetColumn="ano" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PRGPRODUCCIONDataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="PRGPRODUCCIONDataSet2" msprop:Generator_UserDSName="PRGPRODUCCIONDataSet2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="F_V_anos_prod" msprop:Generator_TableClassName="F_V_anos_prodDataTable" msprop:Generator_TableVarName="tableF_V_anos_prod" msprop:Generator_TablePropName="F_V_anos_prod" msprop:Generator_RowDeletingName="F_V_anos_prodRowDeleting" msprop:Generator_RowChangingName="F_V_anos_prodRowChanging" msprop:Generator_RowEvHandlerName="F_V_anos_prodRowChangeEventHandler" msprop:Generator_RowDeletedName="F_V_anos_prodRowDeleted" msprop:Generator_UserTableName="F_V_anos_prod" msprop:Generator_RowChangedName="F_V_anos_prodRowChanged" msprop:Generator_RowEvArgName="F_V_anos_prodRowChangeEvent" msprop:Generator_RowClassName="F_V_anos_prodRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ano" msprop:Generator_ColumnVarNameInTable="columnano" msprop:Generator_ColumnPropNameInRow="ano" msprop:Generator_ColumnPropNameInTable="anoColumn" msprop:Generator_UserColumnName="ano" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
