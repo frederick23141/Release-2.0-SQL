@@ -7,6 +7,8 @@ Public Class FrmLogin
     Dim frm As New Frm_alerta_bd
     Dim val_timer As String
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'Me.Opacity = 0.95
+        Me.StartPosition = FormStartPosition.CenterScreen
         Guna2TextBox1.Focus()
     End Sub
 
@@ -110,14 +112,7 @@ Public Class FrmLogin
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles btnIngresar.Click
         Dim tipo As String = ""
-        'If (SystemInformation.ComputerName = "BAJOGRANDE2" And txtUsuario.Text = "" And txtContra.Text = "") Then
-        '    txtUsuario.Text = "admin"
-        '    txtContra.Text = "sistemas"
-        'End If
-        If (SystemInformation.ComputerName = "CONTABILIDAD-A" And Guna2TextBox1.Text = "" And txtContra.Text = "") Then
-            Guna2TextBox1.Text = "admin"
-            txtContra.Text = "sistemas"
-        End If
+
         objUsuarioEn = objLoginLn.tipoUsuario(Guna2TextBox1.Text, txtContra.Text)
         tipo = objUsuarioEn.permiso
 

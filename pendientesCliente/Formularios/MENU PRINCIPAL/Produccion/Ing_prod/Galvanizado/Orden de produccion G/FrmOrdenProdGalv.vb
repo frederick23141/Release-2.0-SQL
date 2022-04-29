@@ -60,6 +60,13 @@ Public Class FrmOrdenProdGalv
         cargaComp = True
         TblPpal.SelectedTab = Tbl_seleccion_orden
         recorrer_botones_color()
+        GetSerialPortNames()
+    End Sub
+    Sub GetSerialPortNames()
+        ' Show all available COM ports.
+        For Each sp As String In My.Computer.Ports.SerialPortNames
+            cbserial.Items.Add(sp)
+        Next
     End Sub
     'Metodos que carga cada uno de los combo box
     Private Sub cargarDataSourse()
@@ -70,12 +77,11 @@ Public Class FrmOrdenProdGalv
 
         For i = Now.Year - 1 To Now.Year + 1
             cboAnoConsulta.Items.Add(i)
-            'cboAñoProg.Items.Add(i)
-            'cboAnoAdminOrden.Items.Add(i)
+
         Next
-        'cboAñoProg.Text = Now.Year
+
         cboAnoConsulta.Text = Now.Year
-        'cboAnoAdminOrden.Text = Now.Year
+
 
         sql = "select *  from referencias where codigo like '22B%' AND ref_anulada = 'N'  "
         dt = New DataTable
@@ -111,18 +117,11 @@ Public Class FrmOrdenProdGalv
         cboOperariosG.DisplayMember = "nombres"
         cboOperariosG.Text = "Seleccione"
 
-        'cboMesProg.DataSource = objOpsimpesLn.returnDtMeses()
-        'cboMesProg.ValueMember = "numMes"
-        'cboMesProg.DisplayMember = "nombMes"
-        'cboMesProg.SelectedValue = Now.Month
         cboMesConsulta.DataSource = objOpsimpesLn.returnDtMeses()
         cboMesConsulta.ValueMember = "numMes"
         cboMesConsulta.DisplayMember = "nombMes"
         cboMesConsulta.SelectedValue = Now.Month
-        'cboMesAdminOrden.DataSource = objOpsimpesLn.returnDtMeses()
-        'cboMesAdminOrden.ValueMember = "numMes"
-        'cboMesAdminOrden.DisplayMember = "nombMes"
-        'cboMesAdminOrden.SelectedValue = Now.Month
+
 
 
     End Sub
@@ -184,8 +183,7 @@ Public Class FrmOrdenProdGalv
                             If (txtProdFinal.Text <> "") Then
                                 If (objOpsimpesLn.validarCodigo(txtProdFinal.Text)) Then
                                     If (objOpsimpesLn.validarCodigoEstado(txtProdFinal.Text)) Then
-                                        'If (cboAñoProg.Text <> "Seleccione") Then
-                                        '    If (cboAñoProg.Text <> "Seleccione") Then
+
                                         If (txtCalibre.Text.Trim <> "") Then
                                             If IsNumeric(txtCalibre.Text.Trim) Then
                                                 Return True
@@ -195,12 +193,7 @@ Public Class FrmOrdenProdGalv
                                         Else
                                             MessageBox.Show("Ingrese un calibre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                         End If
-                                        '    Else
-                                        '        MessageBox.Show("Ingrese un Mes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                        '    End If
-                                        'Else
-                                        '    MessageBox.Show("Ingrese un Año", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                        'End If
+
                                     Else
                                         MessageBox.Show("La referencia que se ingreso no esta activa", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                     End If
@@ -233,8 +226,7 @@ Public Class FrmOrdenProdGalv
         txtCantProg.Text = ""
         cboOrigen.Text = "Seleccione"
         cboCliente.Text = "Seleccione"
-        'cboMesProg.SelectedValue = Now.Month
-        'cboAñoProg.Text = Now.Year
+
         txtnota.Text = ""
         txtCalibre.Text = ""
     End Sub
@@ -396,47 +388,7 @@ Public Class FrmOrdenProdGalv
             dtgOperario.Columns("fecha_creacion").Visible = False
         End If
     End Sub
-    'Public Sub pintar_operarios()
-    '    Dim fecha As String = CDate(Now)
-    '    Dim fecha_hora As String = objOpSimplesLn.cambiarFormatoFecha(Now)
-    '    fecha_hora = CDate(fecha_hora & " 00:01:00")
-    '    Dim fecha_6 As String = objOpSimplesLn.cambiarFormatoFecha(Now)
-    '    fecha_6 = CDate(fecha_6 & " 05:45:00")
-    '    Dim fecha_5_m As String = objOpSimplesLn.cambiarFormatoFecha(Now.AddDays(1))
-    '    fecha_5_m = CDate(fecha_5_m & " 05:45:00")
-    '    If CDate(fecha) >= CDate(fecha_6) And CDate(fecha) <= CDate(fecha_5_m) Then
-    '        For Each Row As DataGridViewRow In dtgOperario.Rows
-    '            fecha_hora = CDate(fecha_hora).AddDays(1)
-    '            If CDate(fecha) >= CDate(fecha_hora) Then
-    '                fecha_hora = CDate(fecha_hora).AddDays(-1)
-    '                If Not IsDBNull(Row.Cells("fecha_creacion").Value) Then
-    '                    If Row.Cells("fecha_creacion").Value = fecha_hora Then
-    '                        Row.DefaultCellStyle.BackColor = Color.GreenYellow
-    '                    Else
-    '                        Row.DefaultCellStyle.BackColor = Color.LightCoral
-    '                    End If
-    '                Else
-    '                    Row.DefaultCellStyle.BackColor = Color.LightCoral
-    '                End If
-    '            Else
-    '                fecha_hora = objOpSimplesLn.cambiarFormatoFecha(Now)
-    '                fecha_hora = fecha_hora & " 00:00:00"
-    '                If Not IsDBNull(Row.Cells("fecha_creacion").Value) Then
-    '                    If Row.Cells("fecha_creacion").Value = CDate(fecha_hora) Then
-    '                        Row.DefaultCellStyle.BackColor = Color.GreenYellow
-    '                    Else
-    '                        Row.DefaultCellStyle.BackColor = Color.LightCoral
-    '                    End If
-    '                Else
-    '                    Row.DefaultCellStyle.BackColor = Color.LightCoral
-    '                End If
-    '            End If
-    '            If Row.Cells("prod_final").Value.Contains("33G") Then
-    '                Row.DefaultCellStyle.BackColor = Color.GreenYellow
-    '            End If
-    '        Next
-    '    End If
-    'End Sub
+
     Private Sub calcuPorcen()
         For Each row As DataGridViewRow In dtg_consulta.Rows
             Dim ppto_kilos As Double = row.Cells.Item("cant_prog").Value
@@ -450,16 +402,7 @@ Public Class FrmOrdenProdGalv
             Dim porcentaje As Double
 
             porcentaje = ((kilos * 100) / ppto_kilos)
-            'row.DataGridView.Rows(row.Index).DefaultCellStyle.BackColor = Color.Tomato
-            'If (porcentaje >= 90 And porcentaje <= 300) Then
-            '    row.DataGridView.Rows(row.Index).DefaultCellStyle.BackColor = Color.SpringGreen
-            'End If
-            'If (porcentaje < 90 And porcentaje >= 50) Then
-            '    row.DataGridView.Rows(row.Index).DefaultCellStyle.BackColor = Color.PaleGreen
-            'End If
-            'If (porcentaje < 50 And porcentaje >= 0) Then
-            '    row.DataGridView.Rows(row.Index).DefaultCellStyle.BackColor = Color.Salmon
-            'End If
+
             convert = porcentaje.ToString("0")
             row.Cells.Item("col_porcen").Value = convert & " %"
             If row.Index = (dtg_consulta.Rows.Count - 1) Then
@@ -1312,5 +1255,21 @@ Public Class FrmOrdenProdGalv
     Private Sub IngresarMantenimientoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IngresarMantenimientoToolStripMenuItem.Click
         Dim frm As New Frm_Mantenimiento_Planta
         frm.Show()
+    End Sub
+
+    Private Sub seleccionarpuerto_CheckedChanged(sender As Object, e As Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs) Handles seleccionarpuerto.CheckedChanged
+        If seleccionarpuerto.Checked Then
+            ''capturamos el texto del cb y le sacamos el numero
+            Dim cadena As String = cbserial.Text
+
+            For i = 0 To cadena.Length - 1
+                If (cadena.Chars(i) <> "k") Then
+                    Exit For
+                End If
+            Next
+
+        Else
+
+        End If
     End Sub
 End Class

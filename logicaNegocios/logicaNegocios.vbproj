@@ -84,6 +84,7 @@
     <Compile Include="AnVrKiloLn.vb" />
     <Compile Include="Audit_invLn.vb" />
     <Compile Include="ClienteLn.vb" />
+    <Compile Include="Galvanizado\Ing_Galvanizado.vb" />
     <Compile Include="Galv_bachesLn.vb" />
     <Compile Include="Gestion_alambronLn.vb" />
     <Compile Include="Gestion_materia_primaLn.vb" />
@@ -164,6 +165,7 @@
       <Name>entidadNegocios</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
